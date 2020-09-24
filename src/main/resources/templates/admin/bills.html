@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Danh Sach Bill</h1>
+	
+	<table border="1px solid black">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>BUYDATE</th>
+			<th>DISCOUNT</th>
+			<th>PRICETOTAL</th>
+			<th>PAY</th>
+			<th>OPTION</th>
+		</tr>
+
+		<tr th:each="b:${bills}">
+			<td th:text="${b.id}"></td>
+			<td th:text="${b.buyer.name}"></td>
+			<td th:text="${b.buyDate}"></td>	
+			<td th:text="${b.discountPercent}+'%'"></td>
+			<td th:text="${b.priceTotal}"></td>
+			<td th:text="${b.pay}"></td>		
+			<td>
+			<a th:href="@{'/admin/bill/'+${b.id}}">detail</a>|<a th:href="@{'/admin/delete-bills/'+${b.id}}">Delete</a>
+			</td>
+		</tr>
+
+	</table>
+	
+</body>
+</html>
